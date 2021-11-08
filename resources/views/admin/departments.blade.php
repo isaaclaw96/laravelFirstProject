@@ -320,7 +320,7 @@
                         </tbody>
                     </table>
                     <br>
-                    {{-- {{$users->links()}} --}}
+                    {{$dept->links()}}
 
                     @endisset
 

@@ -7,7 +7,7 @@ use Faker\Factory as Faker;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
 
-class JobSeeder extends Seeder
+class EmployeeJobSeeder extends Seeder
 {
     /**
      * Run the database seeds.

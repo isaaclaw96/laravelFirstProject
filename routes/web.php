@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\QueueEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
@@ -36,7 +38,22 @@ Route::prefix('admin')->group(function(){
     Route::any('/deptedit/{id}', [DepartmentController::class,'edit'])->name('deptedit');
     Route::any('/deparment/delete/{id}', [DepartmentController::class, 'delete'])->name('delete');
 
+});
 
+Route::get('create-user', function(){
+    $email_list['email'] = 'isaac.law996@gmail.com';
+
+});
+
+Route:: get('queue-email', function(){
+
+    $email_list['email'] = 'isaac.law996@gmail.com';
+
+    dispatch(new \App\Jobs\QueueJob($email_list));
+
+    return response()->json($email_list['email']);
+
+    // dd('Send Email Successfully');
 });
 
 Route::view('/fakelogin','fakelogin');

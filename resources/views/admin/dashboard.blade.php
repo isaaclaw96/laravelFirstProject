@@ -77,7 +77,6 @@
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
 
@@ -290,10 +289,9 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
-                    <h1 class="h3 mb-4 text-gray-800">User Management</h1>
-                    <h1 class="h3 mb-4 text-gray-800">Job Management</h1>
-                    <h1 class="h3 mb-4 text-gray-800">Department Management</h1>
-
+                    <h1 class="h3 mb-4 text-gray-800">Total Users = {{$user_count}}</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Total Jobs = {{$job_count}}</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Total Departments = {{$dept_count}}</h1>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -342,14 +340,31 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="/js/sb-admin-2.min.js"></script>
+    {{-- @yield('scripts') --}}
+    <script>
+        $(document).ready(function(){
+        $.ajax({
+            url:'api/dashboard',
+            type: 'post',
+            headers: {"Authorization": "Bearer {{$jwt_token}}"},
+            data:{},
+            success:function(response){
+                $("#user_total").html(response.user_total);
+            },
+            error:(function(error){
+
+            })
+        })
+    })
+    </script>
 
 </body>
 

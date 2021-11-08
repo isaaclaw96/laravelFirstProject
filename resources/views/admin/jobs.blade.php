@@ -299,6 +299,8 @@
                             <th scope="col">ID</th>
                             <th scope="col">Title</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Min Salary</th>
+                            <th scope="col">Max Salary</th>
                             <th scope="col">Action</th>
                             </tr>
 
@@ -307,11 +309,13 @@
 
 
                         @foreach ($jobs as $value)
-                            {{-- var_dump($user); --}}
+
                              <tr>
                                 <th scope="row">{{ $value->id }}</th>
                                 <td>{{$value->title}}</td>
                                 <td>{{$value->description}}</td>
+                                <td>{{$value->min_salary}}</td>
+                                <td>{{$value->max_salary}}</td>
                                 <td>
                                     <a href="{{ URL::signedRoute('jobedit',['id'=>$value->id])}}">Edit</a>
                                     <a href="{{ URL::signedRoute('delete',['id'=>$value->id])}}">Delete</a>
@@ -322,7 +326,7 @@
                         </tbody>
                     </table>
                     <br>
-                    {{-- {{$users->links()}} --}}
+                    {{$jobs->links()}}
 
                     @endisset
 

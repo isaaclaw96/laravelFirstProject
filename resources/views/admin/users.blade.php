@@ -307,7 +307,7 @@
 
 
                         @foreach ($users as $user)
-                            {{-- var_dump($user); --}}
+
                             <tr>
                                 <th scope="row">{{ $user->id }}</th>
                                 <td>{{$user->name}}</td>
@@ -322,7 +322,7 @@
                         </tbody>
                     </table>
                     <br>
-                    {{-- {{$users->links()}} --}}
+                    {{$users->links()}}
 
                     @endisset
 
